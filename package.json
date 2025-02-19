@@ -1,0 +1,24 @@
+{
+  "name": "reviews-admin-panel",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.7",
+    "axios": "^1.7.9",
+    "chart.js": "^3.9.1",
+    "tailwindcss": "^4.0.7",
+    "vue": "^3.5.13",
+    "vue-chart-3": "^3.1.8",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.1.0"
+  }
+}
