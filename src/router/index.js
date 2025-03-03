@@ -1,12 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import ApiKeysView from "../views/ApiKeysView.vue";
-import DocumentationView from "../views/DocumentationView.vue";
+import Home from "../views/Home.vue";
+import ApiKeys from "../views/ApiKeys.vue";
+import Documentation from "../views/Documentation.vue";
+import Front from "../views/Front.vue";
+import Login from "../views/Login.vue";
 
 const routes = [
-  { path: "/", component: HomeView },
-  { path: "/api-keys", component: ApiKeysView },
-  { path: "/documentation", component: DocumentationView },
+    { path: "/", component: Front },
+    { path: "/home", component: Home },
+    { path: "/api-keys", component: ApiKeys },
+    { path: "/documentation", component: Documentation },
+    { path: "/login", component: Login }
 ];
 
 const router = createRouter({
@@ -15,3 +19,6 @@ const router = createRouter({
 });
 
 export default router;
+
+//middleware for routes
+//router for authenticated user

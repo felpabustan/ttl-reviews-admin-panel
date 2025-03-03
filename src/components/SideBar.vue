@@ -11,6 +11,9 @@
         <RouterLink to="/documentation" class="block p-2 hover:bg-gray-700 rounded">
             📚 Documentation
         </RouterLink>
+        <RouterLink to="/login" class="block p-2 hover:bg-gray-700 rounded">
+            📚 Login
+        </RouterLink>
       </nav>
     </div>
   </template>
