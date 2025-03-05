@@ -1,23 +1,21 @@
 <template>
-  <div class="flex container">
-    <!-- Sidebar -->
-    <NewSideBar />
+  <div class="flex flex-col min-h-screen">
+    <!-- Top Navigation Bar -->
+    <NavBar />
 
     <!-- Main Content -->
-    <div class="ml-64 p-6 w-full mx-auto">
+    <div class="flex-1 container mx-auto p-6 pt-20">
       <RouterView />
     </div>
   </div>
 </template>
 
 <script>
-//import Sidebar from "./components/Sidebar.vue";
-import NewSideBar from "./components/NewSideBar.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
-  components: { 
-    // Sidebar,
-    NewSideBar
+  components: {
+    NavBar,
   },
 };
 </script>
