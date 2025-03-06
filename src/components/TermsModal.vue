@@ -8,17 +8,47 @@
               class="bg-white w-[80%] max-w-3xl p-6 rounded-lg shadow-lg relative transform transition-all"
             >
               <h2 class="text-lg font-semibold mb-4">Terms and Conditions</h2>
-  
-              <!-- Scrollable Content -->
               <div 
                 ref="scrollBox"
-                class="h-60 overflow-y-auto border p-3 text-sm text-gray-700"
+                class="h-60 overflow-y-auto border p-3 text-sm text-gray-700 text-justify"
                 @scroll="checkScroll"
               >
-                <p v-for="n in 50" :key="n">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <h3 class="font-semibold mb-2">1. Introduction</h3>
+                <p>
+                  By using our platform to submit product reviews, you agree to these terms and conditions. Your reviews help
+                  other users make informed decisions, and we are committed to maintaining a fair and transparent review system.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">2. User Data Collection</h3>
+                <p>
+                  When submitting a review, we collect your name, email, and review content. This information is used to verify 
+                  authenticity and improve user experience. We do not sell or share your personal data with third parties without consent.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">3. Review Guidelines</h3>
+                <p>
+                  Your reviews should be honest, respectful, and relevant to the product. We do not allow reviews containing 
+                  hate speech, offensive language, spam, or misleading information. Violation of these guidelines may lead to 
+                  the removal of your review or account suspension.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">4. Intellectual Property</h3>
+                <p>
+                  By submitting a review, you grant us a non-exclusive, worldwide, royalty-free license to use, modify, and display 
+                  your content on our platform. You retain ownership of your review but allow us to use it for promotional purposes.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">5. Liability Disclaimer</h3>
+                <p>
+                  We are not responsible for the accuracy of user reviews. Reviews reflect personal opinions, and we do not endorse 
+                  or guarantee any claims made in user-submitted content.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">6. Changes to Terms</h3>
+                <p>
+                  We reserve the right to modify these terms at any time. Continued use of our platform after changes signifies 
+                  your acceptance of the updated terms.
+                </p>
+                <h3 class="font-semibold mt-3 mb-2">7. Contact Information</h3>
+                <p>
+                  If you have any questions regarding these terms, please contact us at support@example.com.
+                </p>
               </div>
-  
-              <!-- Accept Button -->
               <button
                 class="w-full bg-purple-950 text-white mt-4 py-2 rounded disabled:opacity-50"
                 :disabled="!scrolledToBottom"
@@ -26,8 +56,6 @@
               >
                 Accept
               </button>
-  
-              <!-- Close Button -->
               <button @click="closeModal" class="absolute top-2 right-2 text-gray-600 hover:text-black">&times;</button>
             </div>
           </Transition>
@@ -44,7 +72,6 @@
   const scrollBox = ref(null);
   const emit = defineEmits(["accepted"]);
   
-  // Check if user scrolled to the bottom
   const checkScroll = () => {
     const el = scrollBox.value;
     if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
@@ -52,36 +79,30 @@
     }
   };
   
-  // Open modal
   const openModal = () => {
     isOpen.value = true;
     scrolledToBottom.value = false;
   };
   
-  // Close modal
   const closeModal = () => {
     isOpen.value = false;
   };
   
-  // Accept terms and close modal
   const acceptTerms = () => {
     isOpen.value = false;
-    emit("accepted"); // Emit event to parent
+    emit("accepted");
   };
   
-  defineExpose({ openModal }); // Allows parent component to trigger this modal
+  defineExpose({ openModal });
   </script>
   
   <style>
-  /* Fade Animation */
   .modal-fade-enter-active, .modal-fade-leave-active {
     transition: opacity 0.3s ease-in-out;
   }
   .modal-fade-enter-from, .modal-fade-leave-to {
     opacity: 0;
   }
-  
-  /* Slide Animation */
   .modal-slide-enter-active, .modal-slide-leave-active {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
@@ -94,4 +115,3 @@
     opacity: 0;
   }
   </style>
-  

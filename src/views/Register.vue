@@ -94,9 +94,10 @@
   <!-- Terms Modal -->
   <TermsModal ref="termsModal" @accepted="acceptTerms = true" />
 </template>
-
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
 import TermsModal from "../components/TermsModal.vue"; // Import the modal
 
 export default {
@@ -110,6 +111,7 @@ export default {
     const loading = ref(false);
     const errorMessage = ref(null);
     const termsModal = ref(null);
+    const router = useRouter(); // Initialize Vue Router
 
     const openTermsModal = () => {
       termsModal.value.openModal();
@@ -121,13 +123,33 @@ export default {
         return;
       }
 
+      if (password.value !== password_confirmation.value) {
+        errorMessage.value = "Passwords do not match.";
+        return;
+      }
+
       loading.value = true;
       errorMessage.value = null;
 
-      // Simulated API call
-      setTimeout(() => {
-        alert("Registered successfully!");
-        loading.value = false;
+      setTimeout(async () => { // Async function inside setTimeout
+        try {
+          const response = await axios.post("/api/v1/register", {
+            name: name.value,
+            email: email.value,
+            password: password.value,
+            password_confirmation: password_confirmation.value,
+          });
+
+          if (response.data.status) {
+            router.push("/login"); // Redirect on success
+          }
+        } catch (error) {
+          errorMessage.value = error.response?.data?.errors
+            ? Object.values(error.response.data.errors).flat().join(", ")
+            : error.response?.data?.message || "Registration failed.";
+        } finally {
+          loading.value = false;
+        }
       }, 1500);
     };
 
@@ -146,3 +168,4 @@ export default {
   },
 };
 </script>
+
