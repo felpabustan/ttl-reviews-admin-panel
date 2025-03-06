@@ -7,7 +7,7 @@
                     <h3 class="text-darkpurple font-bold text-4xl lg:text-5xl xl:text-6xl">
                         Display Trusted Reviews on Your Website
                     </h3>
-                    <h6 class="font-light text-xl text-4xl">
+                    <h6 class="font-light text-4xl">
                         Integrate the TTL App to showcase authentic reviews directly on your site.
                     </h6>
                     <div>
