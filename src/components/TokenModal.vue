@@ -19,13 +19,12 @@
                 class="w-full p-2 border border-gray-300 rounded mb-4"
                 readonly
               />
-              <button @click="copyToken" class="bg-blue-500 text-white px-4 py-2 rounded">
+              <button @click="copyToken" class="bg-blue-500 text-white px-4 py-2 rounded w-full">
                 Copy Token
               </button>
             </div>
             <div class="flex justify-end space-x-2">
               <button @click="cancel" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
-              <button @click="confirm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Confirm</button>
             </div>
           </div>
         </Transition>
@@ -44,14 +43,10 @@ const props = defineProps({
   token: String
 });
 
-const emit = defineEmits(["close", "confirm"]);
+const emit = defineEmits(["close"]);
 
 const cancel = () => {
   emit("close");
-};
-
-const confirm = () => {
-  emit("confirm");
 };
 
 const copyToken = () => {
